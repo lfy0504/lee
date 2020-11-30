@@ -1,0 +1,24 @@
+package ${basePackage}.${entityPackage}.service;
+
+import com.github.pagehelper.PageInfo;
+import ${basePackage}.result.ServiceResult;
+import ${basePackage}.${entityPackage}.pojo.${className};
+
+public interface ${className}Service {
+
+    /** 新建*/
+    ServiceResult<Integer> save(${className} ${entity});
+
+    /** 根据ID查询*/
+    ServiceResult<${className}> getById(String id);
+
+    /** 分页查询*/
+    ServiceResult<PageInfo<${className}>> page(${className} ${entity}, int pageNum, int pageSize);
+
+    /** 更新*/
+    ServiceResult<Integer> update(${className} ${entity});
+
+    /** 逻辑删除*/
+    ServiceResult<Integer> delete(String id);
+
+}

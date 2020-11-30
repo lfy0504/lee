@@ -1,0 +1,118 @@
+package ${basePackage}.${entityPackage}.service.impl;
+
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import ${basePackage}.${entityPackage}.mapper.${className}Mapper;
+import ${basePackage}.${entityPackage}.pojo.${className};
+import ${basePackage}.result.ResultCode;
+import ${basePackage}.result.ServiceResult;
+import ${basePackage}.${entityPackage}.service.${className}Service;
+
+import ${basePackage}.uuid.SnowflakeIdWorker;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+import java.util.List;
+
+@Service("${entity}Service")
+public class ${className}ServiceImpl implements ${className}Service {
+
+    private final static Logger logger = LogManager.getLogger(${className}ServiceImpl.class);
+
+    @Resource
+    ${className}Mapper ${entity}Mapper;
+
+    @Override
+    public ServiceResult<Integer> save(${className} ${entity}) {
+        ServiceResult<Integer> result = new ServiceResult<Integer>();
+        try{
+            SnowflakeIdWorker snowflakeIdWorker = new SnowflakeIdWorker(0,0);
+            String id = Long.toString(snowflakeIdWorker.nextId());
+            ${entity}.setId(id);
+            int c = ${entity}Mapper.save(${entity});
+            result.setData(c);
+        }catch (Exception e){
+            logger.error(e.getMessage(),e);
+            result.setSuccess(false);
+            result.setCode(ResultCode.SQL_SAVE_ERROR.getCode());
+            result.setMessage(ResultCode.SQL_SAVE_ERROR.getMessage());
+        }
+            return result;
+    }
+
+    @Override
+    public ServiceResult<${className}> getById(String id) {
+        ServiceResult<${className}> result = new ServiceResult<${className}>();
+        try {
+            ${className} ${entity} = ${entity}Mapper.getById(id);
+            result.setData(${entity});
+        }catch (Exception e){
+            logger.error(e.getMessage(),e);
+            result.setSuccess(false);
+            result.setCode(ResultCode.SQL_SELECT_ERROR.getCode());
+            result.setMessage(ResultCode.SQL_SELECT_ERROR.getMessage());
+        }
+        return result;
+    }
+
+    @Override
+    public ServiceResult<PageInfo<${className}>> page(${className} ${entity}, int pageNum, int pageSize) {
+        ServiceResult<PageInfo<${className}>> result = new ServiceResult<PageInfo<${className}>>();
+        try {
+            PageHelper.startPage(pageNum,pageSize);
+            List<${className}> list = ${entity}Mapper.page(${entity});
+            PageInfo<${className}> page = new PageInfo<${className}>(list);
+            result.setData(page);
+        }catch (Exception e){
+            logger.error(e.getMessage(),e);
+            result.setSuccess(false);
+            result.setCode(ResultCode.SQL_SELECT_ERROR.getCode());
+            result.setMessage(ResultCode.SQL_SELECT_ERROR.getMessage());
+        }
+        return result;
+    }
+
+    @Override
+    public ServiceResult<Integer> update(${className} ${entity}) {
+        ServiceResult<Integer> result = new ServiceResult<Integer>();
+        try {
+            int c = ${entity}Mapper.update(${entity});
+            if(c > 0){
+                result.setData(c);
+            }else {
+                result.setData(c);
+                result.setCode(ResultCode.SQL_UPDATE_NONE.getCode());
+                result.setMessage(ResultCode.SQL_UPDATE_NONE.getMessage());
+            }
+        }catch (Exception e){
+            logger.error(e.getMessage(),e);
+            result.setSuccess(false);
+            result.setCode(ResultCode.SQL_UPDATE_ERROR.getCode());
+            result.setMessage(ResultCode.SQL_UPDATE_ERROR.getMessage());
+        }
+        return result;
+    }
+
+    @Override
+    public ServiceResult<Integer> delete(String id) {
+        ServiceResult<Integer> result = new ServiceResult<>();
+        try {
+            int c = ${entity}Mapper.delete(id);
+            if (c > 0){
+                result.setData(c);
+            }else {
+                result.setData(c);
+                result.setCode(ResultCode.SQL_DELETE_NONE.getCode());
+                result.setMessage(ResultCode.SQL_DELETE_NONE.getMessage());
+            }
+        }catch (Exception e){
+            logger.error(e.getMessage(),e);
+            result.setSuccess(false);
+            result.setCode(ResultCode.SQL_DELETE_ERROR.getCode());
+            result.setMessage(ResultCode.SQL_DELETE_ERROR.getMessage());
+        }
+        return result;
+    }
+}

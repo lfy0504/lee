@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="${basePackage}.${entityPackage}.mapper.${className}Mapper">
+    <resultMap id="base" type="${basePackage}.${entityPackage}.pojo.${className}">
+#foreach(${property} in ${properties})
+#if(${property.key} =='PRI')
+        <id property="${property.propertyName}" column="${property.columnName}"/>
+#else
+        <result property="${property.propertyName}" column="${property.columnName}"/>
+#end
+#end
+    </resultMap>
+
+    <sql id="baseColumn">
+        #foreach(${property} in ${properties})`${property.columnName}` #if($foreach.hasNext),#end #end
+
+    </sql>
+
+    <insert id="save">
+        insert into ${tableName}
+        <set>
+#foreach(${property} in ${properties})
+            <if test="${entity}.${property.propertyName}!=null and ${entity}.${property.propertyName}!=''">
+                ${property.columnName} = #{${entity}.${property.propertyName}}#if($foreach.hasNext),#end
+
+            </if>
+#end
+        </set>
+    </insert>
+
+    <select id="getById" resultMap="base">
+        select <include refid="baseColumn"/> from ${tableName} where is_delete = 0 and id = #{id}
+    </select>
+
+    <select id="page" resultMap="base">
+        select <include refid="baseColumn"/> from ${tableName} where is_delete = 0
+#foreach(${property} in ${properties})
+        <if test="${entity}.${property.propertyName}!=null and ${entity}.${property.propertyName}!=''">
+            and ${property.columnName} = #{${entity}.${property.propertyName}}
+        </if>
+#end
+    </select>
+
+    <update id="update">
+        update ${tableName}
+        <set>
+#foreach(${property} in ${properties})
+            <if test="${entity}.${property.propertyName}!=null and ${entity}.${property.propertyName}!=''">
+                ${property.columnName} = #{${entity}.${property.propertyName}}#if($foreach.hasNext),#end
+
+            </if>
+#end
+        </set>
+        where id = #{${entity}.id}
+    </update>
+
+    <update id="delete">
+        update ${tableName} set is_delete = 1 where id = #{id}
+    </update>
+
+</mapper>

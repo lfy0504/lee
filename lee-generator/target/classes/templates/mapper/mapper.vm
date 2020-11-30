@@ -1,0 +1,20 @@
+package ${basePackage}.${entityPackage}.mapper;
+
+import ${basePackage}.${entityPackage}.pojo.${className};
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
+
+public interface ${className}Mapper {
+
+    int save(@Param("${entity}") ${className} ${entity});
+
+    ${className} getById(String id);
+
+    List<${className}> page(@Param("${entity}") ${className} ${entity});
+
+    int update(@Param("${entity}") ${className} ${entity});
+
+    int delete(String id);
+
+}

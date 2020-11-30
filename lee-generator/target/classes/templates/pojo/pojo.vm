@@ -1,0 +1,29 @@
+package ${basePackage}.${entityPackage}.pojo;
+
+import java.lang.String;
+import java.lang.Integer;
+import java.lang.Boolean;
+import java.util.Date;
+import java.math.BigDecimal;
+
+public class ${className} {
+
+    #foreach(${property} in ${properties})
+/**
+     * ${property.remark}
+     */
+    private ${property.javaType} ${property.propertyName};
+
+    #end
+#foreach(${property} in ${properties})
+public ${property.javaType} get${property.getterAndSetter}() {
+        return ${property.propertyName};
+    }
+
+    public void set${property.getterAndSetter}(${property.javaType} ${property.propertyName}) {
+        this.${property.propertyName} = ${property.propertyName};
+    }
+
+    #end
+
+}

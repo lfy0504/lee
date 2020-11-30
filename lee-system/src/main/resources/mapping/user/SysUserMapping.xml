@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.isabella.lee.user.mapper.SysUserMapper">
+    <resultMap id="base" type="com.isabella.lee.user.pojo.SysUser">
+        <id property="id" column="id"/>
+        <result property="userName" column="user_name"/>
+        <result property="salt" column="salt"/>
+        <result property="password" column="password"/>
+        <result property="realName" column="real_name"/>
+        <result property="gender" column="gender"/>
+        <result property="idCard" column="id_card"/>
+        <result property="phoneNumber" column="phone_number"/>
+        <result property="nation" column="nation"/>
+        <result property="createTime" column="create_time"/>
+        <result property="createBy" column="create_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="isDelete" column="is_delete"/>
+    </resultMap>
+
+    <sql id="baseColumn">
+        `id` , `user_name` , `salt` , `password` , `real_name` , `gender` , `id_card` , `phone_number` , `nation` , `create_time` , `create_by` , `update_time` , `update_by` , `is_delete`  
+    </sql>
+
+    <insert id="save">
+        insert into sys_user
+        <set>
+            <if test="sysUser.id!=null and sysUser.id!=''">
+                id = #{sysUser.id},
+            </if>
+            <if test="sysUser.userName!=null and sysUser.userName!=''">
+                user_name = #{sysUser.userName},
+            </if>
+            <if test="sysUser.salt!=null and sysUser.salt!=''">
+                salt = #{sysUser.salt},
+            </if>
+            <if test="sysUser.password!=null and sysUser.password!=''">
+                password = #{sysUser.password},
+            </if>
+            <if test="sysUser.realName!=null and sysUser.realName!=''">
+                real_name = #{sysUser.realName},
+            </if>
+            <if test="sysUser.gender!=null and sysUser.gender!=''">
+                gender = #{sysUser.gender},
+            </if>
+            <if test="sysUser.idCard!=null and sysUser.idCard!=''">
+                id_card = #{sysUser.idCard},
+            </if>
+            <if test="sysUser.phoneNumber!=null and sysUser.phoneNumber!=''">
+                phone_number = #{sysUser.phoneNumber},
+            </if>
+            <if test="sysUser.nation!=null and sysUser.nation!=''">
+                nation = #{sysUser.nation},
+            </if>
+            <if test="sysUser.createTime!=null and sysUser.createTime!=''">
+                create_time = #{sysUser.createTime},
+            </if>
+            <if test="sysUser.createBy!=null and sysUser.createBy!=''">
+                create_by = #{sysUser.createBy},
+            </if>
+            <if test="sysUser.updateTime!=null and sysUser.updateTime!=''">
+                update_time = #{sysUser.updateTime},
+            </if>
+            <if test="sysUser.updateBy!=null and sysUser.updateBy!=''">
+                update_by = #{sysUser.updateBy},
+            </if>
+            <if test="sysUser.isDelete!=null and sysUser.isDelete!=''">
+                is_delete = #{sysUser.isDelete}
+            </if>
+        </set>
+    </insert>
+
+    <select id="getById" resultMap="base">
+        select <include refid="baseColumn"/> from sys_user where is_delete = 0 and id = #{id}
+    </select>
+
+    <select id="page" resultMap="base">
+        select <include refid="baseColumn"/> from sys_user where is_delete = 0
+        <if test="sysUser.id!=null and sysUser.id!=''">
+            and id = #{sysUser.id}
+        </if>
+        <if test="sysUser.userName!=null and sysUser.userName!=''">
+            and user_name = #{sysUser.userName}
+        </if>
+        <if test="sysUser.salt!=null and sysUser.salt!=''">
+            and salt = #{sysUser.salt}
+        </if>
+        <if test="sysUser.password!=null and sysUser.password!=''">
+            and password = #{sysUser.password}
+        </if>
+        <if test="sysUser.realName!=null and sysUser.realName!=''">
+            and real_name = #{sysUser.realName}
+        </if>
+        <if test="sysUser.gender!=null and sysUser.gender!=''">
+            and gender = #{sysUser.gender}
+        </if>
+        <if test="sysUser.idCard!=null and sysUser.idCard!=''">
+            and id_card = #{sysUser.idCard}
+        </if>
+        <if test="sysUser.phoneNumber!=null and sysUser.phoneNumber!=''">
+            and phone_number = #{sysUser.phoneNumber}
+        </if>
+        <if test="sysUser.nation!=null and sysUser.nation!=''">
+            and nation = #{sysUser.nation}
+        </if>
+        <if test="sysUser.createTime!=null and sysUser.createTime!=''">
+            and create_time = #{sysUser.createTime}
+        </if>
+        <if test="sysUser.createBy!=null and sysUser.createBy!=''">
+            and create_by = #{sysUser.createBy}
+        </if>
+        <if test="sysUser.updateTime!=null and sysUser.updateTime!=''">
+            and update_time = #{sysUser.updateTime}
+        </if>
+        <if test="sysUser.updateBy!=null and sysUser.updateBy!=''">
+            and update_by = #{sysUser.updateBy}
+        </if>
+        <if test="sysUser.isDelete!=null and sysUser.isDelete!=''">
+            and is_delete = #{sysUser.isDelete}
+        </if>
+    </select>
+
+    <update id="update">
+        update sys_user
+        <set>
+            <if test="sysUser.id!=null and sysUser.id!=''">
+                id = #{sysUser.id},
+            </if>
+            <if test="sysUser.userName!=null and sysUser.userName!=''">
+                user_name = #{sysUser.userName},
+            </if>
+            <if test="sysUser.salt!=null and sysUser.salt!=''">
+                salt = #{sysUser.salt},
+            </if>
+            <if test="sysUser.password!=null and sysUser.password!=''">
+                password = #{sysUser.password},
+            </if>
+            <if test="sysUser.realName!=null and sysUser.realName!=''">
+                real_name = #{sysUser.realName},
+            </if>
+            <if test="sysUser.gender!=null and sysUser.gender!=''">
+                gender = #{sysUser.gender},
+            </if>
+            <if test="sysUser.idCard!=null and sysUser.idCard!=''">
+                id_card = #{sysUser.idCard},
+            </if>
+            <if test="sysUser.phoneNumber!=null and sysUser.phoneNumber!=''">
+                phone_number = #{sysUser.phoneNumber},
+            </if>
+            <if test="sysUser.nation!=null and sysUser.nation!=''">
+                nation = #{sysUser.nation},
+            </if>
+            <if test="sysUser.createTime!=null and sysUser.createTime!=''">
+                create_time = #{sysUser.createTime},
+            </if>
+            <if test="sysUser.createBy!=null and sysUser.createBy!=''">
+                create_by = #{sysUser.createBy},
+            </if>
+            <if test="sysUser.updateTime!=null and sysUser.updateTime!=''">
+                update_time = #{sysUser.updateTime},
+            </if>
+            <if test="sysUser.updateBy!=null and sysUser.updateBy!=''">
+                update_by = #{sysUser.updateBy},
+            </if>
+            <if test="sysUser.isDelete!=null and sysUser.isDelete!=''">
+                is_delete = #{sysUser.isDelete}
+            </if>
+        </set>
+        where id = #{sysUser.id}
+    </update>
+
+    <update id="delete">
+        update sys_user set is_delete = 1 where id = #{id}
+    </update>
+
+</mapper>
