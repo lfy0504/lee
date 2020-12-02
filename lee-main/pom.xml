@@ -43,6 +43,11 @@
             <artifactId>lee-generator</artifactId>
             <version>1.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.isabella</groupId>
+            <artifactId>lee-activiti</artifactId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
 
 

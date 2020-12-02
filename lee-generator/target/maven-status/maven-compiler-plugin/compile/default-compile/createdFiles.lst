@@ -1,9 +1,0 @@
-com\isabella\lee\coder\pojo\MainClass.class
-com\isabella\lee\coder\pojo\Property.class
-com\isabella\lee\coder\CoderInterface.class
-com\isabella\lee\velocity\InitVelocity.class
-com\isabella\lee\coder\CoderImpl.class
-com\isabella\lee\config\AutoCodeConfig.class
-com\isabella\lee\CodeFace$1.class
-com\isabella\lee\util\CoderUtil.class
-com\isabella\lee\CodeFace.class

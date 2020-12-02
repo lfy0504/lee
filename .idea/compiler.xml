@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="lee-main" />
         <module name="lee-generator" />
+        <module name="lee-activiti" />
         <module name="lee-common" />
         <module name="lee-system" />
       </profile>
@@ -19,6 +20,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="lee" options="" />
+      <module name="lee-activiti" options="-parameters" />
       <module name="lee-common" options="-parameters" />
       <module name="lee-generator" options="-parameters" />
       <module name="lee-main" options="-parameters" />
