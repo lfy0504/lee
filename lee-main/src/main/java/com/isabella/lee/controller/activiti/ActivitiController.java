@@ -33,6 +33,10 @@ import javax.servlet.http.HttpServletResponse;
 @RequestMapping("/act")
 public class ActivitiController {
 
+    private final String MODEL_NAME = "ACTIVITI_MODEL";
+    private final String MODEL_DESCRIPTION = "ACTIVITI_DESCRIPTION";
+    private final String MODEL_KEY = "ACTIVITI_KEY";
+
 
     @Resource
     RepositoryService repositoryService;
@@ -58,8 +62,10 @@ public class ActivitiController {
             modelObjectNode.put(ModelDataJsonConstants.MODEL_REVISION, 1);
             modelObjectNode.put(ModelDataJsonConstants.MODEL_DESCRIPTION, description);
             modelData.setMetaInfo(modelObjectNode.toString());
-            modelData.setName("eio");
-            modelData.setKey("eio_act");
+            modelData.setName(modelName);
+            modelData.setKey(MODEL_KEY);
+
+
             //保存模型
             repositoryService.saveModel(modelData);
             repositoryService.addModelEditorSource(modelData.getId(), editorNode.toString().getBytes("utf-8"));

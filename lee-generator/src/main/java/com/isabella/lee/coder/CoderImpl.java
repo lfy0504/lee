@@ -23,10 +23,10 @@ public class CoderImpl implements CoderInterface {
     private Connection connection;
     private Statement statement;
     private ResultSet resultSet;
-    private final String DRIVER = "com.mysql.cj.jdbc.Driver";
-    private final String USER_NAME = "root";
-    private final String PASSWORD = "lfy1756@163.com";
-    private final String URL = "jdbc:mysql://47.105.60.236:3306/" + AutoCodeConfig.DATABASE + "?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC";
+    //private final String DRIVER = "com.mysql.cj.jdbc.Driver";
+    //private final String USER_NAME = "root";
+    //private final String PASSWORD = "lfy1756@163.com";
+    //private final String URL = "jdbc:mysql://47.105.60.236:3306/" + AutoCodeConfig.DATABASE + "?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC";
 
     public MainClass getMainClass(String tableName, String classPackage, String modelName) {
         MainClass mainClass = new MainClass();
@@ -41,8 +41,8 @@ public class CoderImpl implements CoderInterface {
         mainClass.setClassPackage(classPackage);
 
         try {
-            Class.forName(DRIVER);
-            connection = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
+            Class.forName(AutoCodeConfig.JDBC_DRIVER);
+            connection = DriverManager.getConnection(AutoCodeConfig.URL, AutoCodeConfig.USER_NAME, AutoCodeConfig.PASSWORD);
             if (!connection.isClosed()) {
                 System.out.println("数据库建立成功");
             }
