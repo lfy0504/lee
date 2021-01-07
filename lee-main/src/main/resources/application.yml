@@ -7,6 +7,18 @@ spring:
     username: root
     password: lfy1756@163.com
     driver-class-name: com.mysql.cj.jdbc.Driver
+  redis:
+    host: localhost
+    port: 6379
+    password:
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: 10
+        max-idle: 500
+        min-idle: 0
+    lettuce:
+      shutdown-timeout: 0
 mybatis:
   mapper-locations: classpath:mapping/*/*Mapping.xml
   type-aliases-package: com.isabella.lee.*.pojo

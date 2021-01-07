@@ -129,6 +129,13 @@
             <artifactId>batik-svggen</artifactId>
             <version>1.7</version>
         </dependency>
+        <!-- redis -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <version>2.4.1</version>
+        </dependency>
+
     </dependencies>
     <build>
         <plugins>
