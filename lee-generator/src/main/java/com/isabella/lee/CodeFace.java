@@ -95,10 +95,6 @@ public class CodeFace {
 
 
         loginButton.addActionListener(new ActionListener() {
-
-
-
-
             @Override
             public void actionPerformed(ActionEvent e) {
                 String modelName = modelText.getText();
@@ -106,7 +102,7 @@ public class CodeFace {
                 String tableName = tableText.getText();
                 //判断有没有模块
                 String modelPath = AutoCodeConfig.PROJECT_PATH + "\\" + modelName;
-                if (!new File(modelPath).exists()){
+                if (!new File(modelPath).exists()) {
                     String msg = "生成失败：未找到代码模块！";
                     infoLabel.setForeground(Color.RED);
                     infoLabel.setText(msg);
@@ -116,7 +112,7 @@ public class CodeFace {
                 }
                 try {
                     CoderInterface coderInterface = new CoderImpl();
-                    MainClass mainClass = coderInterface.getMainClass(tableName,entityPackage,modelName);
+                    MainClass mainClass = coderInterface.getMainClass(tableName, entityPackage, modelName);
                     coderInterface.createController(mainClass);
                     coderInterface.createMapping(mainClass);
                     coderInterface.createMapper(mainClass);
@@ -139,19 +135,19 @@ public class CodeFace {
         panel.add(loginButton);
 
         String projectPath = System.getProperty("user.dir");
-        String propertyPath = AutoCodeConfig.PROJECT_PATH.substring(0,AutoCodeConfig.PROJECT_PATH.length()-1);
+        String propertyPath = AutoCodeConfig.PROJECT_PATH.substring(0, AutoCodeConfig.PROJECT_PATH.length() - 1);
 
 
         String info = "";
 
 
-        if (!projectPath.equals(propertyPath)){
+        if (!projectPath.equals(propertyPath)) {
             System.out.println(projectPath);
             System.out.println(propertyPath);
             info = "路径配置有误！";
             infoLabel.setForeground(Color.RED);
         } else {
-            info = "请填写生成信息！";
+            info = "配置无误，请填写生成信息！";
             infoLabel.setForeground(Color.ORANGE);
         }
         infoLabel.setText(info);

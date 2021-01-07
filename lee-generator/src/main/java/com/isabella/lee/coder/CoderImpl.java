@@ -47,7 +47,10 @@ public class CoderImpl implements CoderInterface {
                 System.out.println("数据库建立成功");
             }
             statement = connection.createStatement();
-            String SQL = "SELECT  `column_name`,column_comment,data_type,column_key FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = '" + AutoCodeConfig.DATABASE + "' AND TABLE_NAME = '" + tableName + "'";
+            String SQL = "SELECT  `column_name`,column_comment,data_type,column_key " +
+                    " FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = '" + AutoCodeConfig.DATABASE + "' " +
+                    " AND TABLE_NAME = '" + tableName + "'" +
+                    " order by COLUMN_KEY desc";
             resultSet = statement.executeQuery(SQL);
             List<Property> properties = new ArrayList<Property>();
             while (resultSet.next()) {
