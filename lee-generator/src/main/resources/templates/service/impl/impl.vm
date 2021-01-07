@@ -8,7 +8,7 @@ import ${basePackage}.result.ResultCode;
 import ${basePackage}.result.ServiceResult;
 import ${basePackage}.${entityPackage}.service.${className}Service;
 
-import ${basePackage}.uuid.SnowflakeIdWorker;
+import ${basePackage}.id.SnowflakeIdWorker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;

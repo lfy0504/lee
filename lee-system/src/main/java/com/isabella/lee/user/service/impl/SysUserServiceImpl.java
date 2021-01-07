@@ -8,7 +8,7 @@ import com.isabella.lee.result.ResultCode;
 import com.isabella.lee.result.ServiceResult;
 import com.isabella.lee.user.service.SysUserService;
 
-import com.isabella.lee.uuid.SnowflakeIdWorker;
+import com.isabella.lee.id.SnowflakeIdWorker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
 
-@Service
+@Service("sysUserService")
 public class SysUserServiceImpl implements SysUserService {
 
     private final static Logger logger = LogManager.getLogger(SysUserServiceImpl.class);
@@ -88,7 +88,7 @@ public class SysUserServiceImpl implements SysUserService {
             }
         }catch (Exception e){
             logger.error(e.getMessage(),e);
-               result.setSuccess(false);
+            result.setSuccess(false);
             result.setCode(ResultCode.SQL_UPDATE_ERROR.getCode());
             result.setMessage(ResultCode.SQL_UPDATE_ERROR.getMessage());
         }

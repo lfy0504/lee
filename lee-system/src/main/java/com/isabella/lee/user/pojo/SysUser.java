@@ -14,44 +14,9 @@ public class SysUser {
     private String id;
 
     /**
-     * 用户名
+     * 创建人
      */
-    private String userName;
-
-    /**
-     * 盐值
-     */
-    private String salt;
-
-    /**
-     * 密码
-     */
-    private String password;
-
-    /**
-     * 真实姓名
-     */
-    private String realName;
-
-    /**
-     * 性别 0 未设置 1 男 2 女
-     */
-    private Byte gender;
-
-    /**
-     * 身份证号码
-     */
-    private String idCard;
-
-    /**
-     * 手机号码
-     */
-    private String phoneNumber;
-
-    /**
-     * 民族
-     */
-    private String nation;
+    private String createBy;
 
     /**
      * 创建时间
@@ -59,14 +24,34 @@ public class SysUser {
     private Date createTime;
 
     /**
-     * 创建人
+     * 邮箱地址
      */
-    private String createBy;
+    private String emailAddress;
 
     /**
-     * 更新时间
+     * 昵称
      */
-    private Date updateTime;
+    private String nickName;
+
+    /**
+     * 密码
+     */
+    private String password;
+
+    /**
+     * 联系方式
+     */
+    private String phoneNumber;
+
+    /**
+     * QQ
+     */
+    private String qq;
+
+    /**
+     * 盐
+     */
+    private String salt;
 
     /**
      * 更新人
@@ -74,9 +59,24 @@ public class SysUser {
     private String updateBy;
 
     /**
-     * 是否删除
+     * 更新时间
      */
-    private Boolean isDelete;
+    private Date updateTime;
+
+    /**
+     * 用户名
+     */
+    private String userName;
+
+    /**
+     * 用户头像
+     */
+    private String userPhoto;
+
+    /**
+     * 微信
+     */
+    private String wechatNumber;
 
     public String getId() {
         return id;
@@ -84,78 +84,6 @@ public class SysUser {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getSalt() {
-        return salt;
-    }
-
-    public void setSalt(String salt) {
-        this.salt = salt;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getRealName() {
-        return realName;
-    }
-
-    public void setRealName(String realName) {
-        this.realName = realName;
-    }
-
-    public Byte getGender() {
-        return gender;
-    }
-
-    public void setGender(Byte gender) {
-        this.gender = gender;
-    }
-
-    public String getIdCard() {
-        return idCard;
-    }
-
-    public void setIdCard(String idCard) {
-        this.idCard = idCard;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getNation() {
-        return nation;
-    }
-
-    public void setNation(String nation) {
-        this.nation = nation;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
     }
 
     public String getCreateBy() {
@@ -166,12 +94,60 @@ public class SysUser {
         this.createBy = createBy;
     }
 
-    public Date getUpdateTime() {
-        return updateTime;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getQq() {
+        return qq;
+    }
+
+    public void setQq(String qq) {
+        this.qq = qq;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
     }
 
     public String getUpdateBy() {
@@ -182,12 +158,36 @@ public class SysUser {
         this.updateBy = updateBy;
     }
 
-    public Boolean getIsDelete() {
-        return isDelete;
+    public Date getUpdateTime() {
+        return updateTime;
     }
 
-    public void setIsDelete(Boolean isDelete) {
-        this.isDelete = isDelete;
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUserPhoto() {
+        return userPhoto;
+    }
+
+    public void setUserPhoto(String userPhoto) {
+        this.userPhoto = userPhoto;
+    }
+
+    public String getWechatNumber() {
+        return wechatNumber;
+    }
+
+    public void setWechatNumber(String wechatNumber) {
+        this.wechatNumber = wechatNumber;
     }
 
     

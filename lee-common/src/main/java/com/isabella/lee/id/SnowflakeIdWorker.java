@@ -1,4 +1,4 @@
-package com.isabella.lee.uuid;
+package com.isabella.lee.id;
 
 /**
  * Twitter_Snowflake<br>

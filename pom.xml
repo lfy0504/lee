@@ -108,6 +108,13 @@
             <scope>provided</scope>
         </dependency>
 
+        <!-- shiro -->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
+            <version>1.6.0</version>
+        </dependency>
+
         <!--batik 转换png-->
         <dependency>
             <groupId>org.apache.xmlgraphics</groupId>
